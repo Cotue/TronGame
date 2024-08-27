@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TronGame")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6237a9d1d981d57e80b03b753456b99545a36319")]
 [assembly: System.Reflection.AssemblyProductAttribute("TronGame")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TronGame")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
