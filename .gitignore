@@ -157,3 +157,5 @@ Icon
 ._*
 .Spotlight-V100
 .Trashes
+# Excluir la carpeta de configuración de Visual Studio
+.vs/
