@@ -8,7 +8,7 @@ namespace TronPlay
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-
+        private Grid _grid;
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -18,16 +18,13 @@ namespace TronPlay
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            // TODO: use this.Content to load your game content here
+            _grid = new Grid(_spriteBatch);
         }
 
         protected override void Update(GameTime gameTime)
@@ -44,7 +41,9 @@ namespace TronPlay
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+            _spriteBatch.Begin();
+            _grid.Draw();
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }
