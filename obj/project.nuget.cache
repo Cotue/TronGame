@@ -1,8 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "2oZPGKufBG7Uw2OwdtOWPWTr6QPA4DI1qgxkBvjZDUp85Ogoo/GucykLrNqR6cAosU37gHZFoQwK043hKHaGfw==",
+  "dgSpecHash": "D7ebH0bQWqO1uXNeDCP4JPrdxGPUOzBeyDZt+bsyKUDF6NAppdMdnchdRjqtjcr06gLDTNmRLeQDr5EmMw0NVA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\X\\source\\repos\\TronGame\\TronGame\\TronGame.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\X\\source\\repos\\TronGame\\TronGame.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\X\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.2.1105\\monogame.framework.desktopgl.3.8.2.1105.nupkg.sha512",
+    "C:\\Users\\X\\.nuget\\packages\\monogame.library.sdl\\2.26.5.5\\monogame.library.sdl.2.26.5.5.nupkg.sha512",
+    "C:\\Users\\X\\.nuget\\packages\\nvorbis\\0.10.4\\nvorbis.0.10.4.nupkg.sha512",
+    "C:\\Users\\X\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\X\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512"
+  ],
   "logs": []
 }

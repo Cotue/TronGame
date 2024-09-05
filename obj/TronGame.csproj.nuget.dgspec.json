@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\X\\source\\repos\\TronGame\\TronGame\\TronGame.csproj": {}
+    "C:\\Users\\X\\source\\repos\\TronGame\\TronGame.csproj": {}
   },
   "projects": {
-    "C:\\Users\\X\\source\\repos\\TronGame\\TronGame\\TronGame.csproj": {
+    "C:\\Users\\X\\source\\repos\\TronGame\\TronGame.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\X\\source\\repos\\TronGame\\TronGame\\TronGame.csproj",
+        "projectUniqueName": "C:\\Users\\X\\source\\repos\\TronGame\\TronGame.csproj",
         "projectName": "TronGame",
-        "projectPath": "C:\\Users\\X\\source\\repos\\TronGame\\TronGame\\TronGame.csproj",
+        "projectPath": "C:\\Users\\X\\source\\repos\\TronGame\\TronGame.csproj",
         "packagesPath": "C:\\Users\\X\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\X\\source\\repos\\TronGame\\TronGame\\obj\\",
+        "outputPath": "C:\\Users\\X\\source\\repos\\TronGame\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\X\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -44,6 +44,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "MonoGame.Framework.DesktopGL": {
+              "target": "Package",
+              "version": "[3.8.2.1105, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
