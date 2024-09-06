@@ -11,6 +11,7 @@ namespace TronPlay
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Mapa mapa;
+        Moto moto;
 
         public Game1()
         {
@@ -27,13 +28,32 @@ namespace TronPlay
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             mapa = new Mapa(GraphicsDevice);
+            moto = new Moto(GraphicsDevice, mapa);
         }
 
         protected override void Update(GameTime gameTime)
         {
+            // Verifica si el jugador presiona las teclas de flecha para mover la moto
+            if (Keyboard.GetState().IsKeyDown(Keys.Up))
+            {
+                moto.MoveUp();
+            }
+            else if (Keyboard.GetState().IsKeyDown(Keys.Down))
+            {
+                moto.MoveDown();
+            }
+            else if (Keyboard.GetState().IsKeyDown(Keys.Left))
+            {
+                moto.MoveLeft();
+            }
+            else if (Keyboard.GetState().IsKeyDown(Keys.Right))
+            {
+                moto.MoveRight();
+            }
+
             base.Update(gameTime);
-            // Actualiza el mapa si es necesario
         }
+
 
         protected override void Draw(GameTime gameTime)
         {
@@ -41,8 +61,8 @@ namespace TronPlay
 
             spriteBatch.Begin();
             mapa.Draw(spriteBatch);
+            moto.Draw(spriteBatch);
             spriteBatch.End();
-
             base.Draw(gameTime);
         }
     }

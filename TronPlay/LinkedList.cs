@@ -107,6 +107,38 @@ namespace TronPlay
         {
             get { return count; }
         }
+        public bool RemoveLast()
+        {
+            if (head == null)
+            {
+                // La lista está vacía
+                return false;
+            }
+
+            if (head == tail)
+            {
+                // Solo hay un nodo en la lista
+                head = null;
+                tail = null;
+            }
+            else
+            {
+                // Hay más de un nodo en la lista
+                Node<T> current = head;
+                while (current.Next != tail)
+                {
+                    current = current.Next;
+                }
+
+                // Eliminar el nodo final
+                current.Next = null;
+                tail = current;
+            }
+
+            count--;
+            return true;
+        }
+
     }
 
 }

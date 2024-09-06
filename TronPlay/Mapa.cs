@@ -21,7 +21,7 @@ namespace TronPlay
             pixelTexture.SetData(new[] { Color.White });
         }
 
-        private void InitializeMatrix()
+        public void InitializeMatrix()
         {
             // Puedes inicializar la matriz con valores por defecto aquí
             for (int x = 0; x < Width; x++)
@@ -39,8 +39,9 @@ namespace TronPlay
             {
                 for (int y = 0; y < Height; y++)
                 {
-                    Color color = matriz[x, y] ? Color.Black : Color.White;
+                    Color color = matriz[x, y] ? Color.White : Color.Black;
                     spriteBatch.Draw(pixelTexture, new Rectangle(x * 10, y * 10, 10, 10), color);
+                   
                 }
             }
         }
