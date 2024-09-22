@@ -24,8 +24,33 @@ namespace TronPlay
             // Inicializa la posición de la moto
             InitializeMoto(new Point(10, 10)); // Comienza en el centro del mapa
         }
+        public bool HasCollided(int width, int height)
+        {
+            // Obtener la posición de la cabeza de la moto
+            var headPosition = head.Data;
 
-        public  void InitializeMoto(Point startPosition)
+            // Verificar si está fuera de los límites del mapa
+            if (headPosition.X < 0 || headPosition.X >= width ||
+                headPosition.Y < 0 || headPosition.Y >= height)
+            {
+                return true; // Colisión con los bordes del mapa
+            }
+
+            // Verificar si ha colisionado con su propia estela (celdas ocupadas)
+            var current = head.Next; // Saltamos la cabeza de la moto
+            while (current != null)
+            {
+                if (current.Data == headPosition)
+                {
+                    return true; // Colisión con la estela
+                }
+                current = current.Next;
+            }
+
+            return false; // No ha colisionado
+        }
+
+        public void InitializeMoto(Point startPosition)
         {
             // Añade la posición inicial de la moto y su estela
             AddFirst(startPosition);

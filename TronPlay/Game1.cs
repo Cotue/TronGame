@@ -51,8 +51,18 @@ namespace TronPlay
                 moto.MoveRight();
             }
 
+            // Verificar colisiones después de mover la moto
+            if (moto.HasCollided(100, 100)) // Asumiendo un mapa de 100x100
+            {
+                // Manejar la colisión
+                Console.WriteLine("¡Colisión detectada!");
+                // Aquí podrías detener el juego, reiniciar la partida o mostrar algún mensaje
+                Exit(); // De momento, vamos a cerrar el juego al detectar colisión
+            }
+
             base.Update(gameTime);
         }
+
 
 
         protected override void Draw(GameTime gameTime)
