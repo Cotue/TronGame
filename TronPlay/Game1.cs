@@ -14,6 +14,10 @@ namespace TronPlay
         Moto moto;
         MotoEnemiga motoEnemiga; // Agregar la moto enemiga
         GameTime gameTime;
+        Fuel fuel;
+        private TimeSpan fuelSpawnTime;
+        private TimeSpan lastFuelSpawnTime;
+
 
         public Game1()
         {
@@ -23,6 +27,8 @@ namespace TronPlay
 
         protected override void Initialize()
         {
+            fuelSpawnTime = TimeSpan.FromSeconds(2);
+            lastFuelSpawnTime = TimeSpan.Zero;
             base.Initialize();
         }
 
@@ -34,14 +40,17 @@ namespace TronPlay
             // Inicializa la moto del jugador
             moto = new Moto(GraphicsDevice, mapa);
 
-            // Inicializa la moto enemiga en una posición diferente
+            // Inicializa la moto enemiga
             motoEnemiga = new MotoEnemiga(GraphicsDevice, mapa);
-             // Cambia las coordenadas según tu necesidad
+
+            // Inicializa el objeto Fuel
+            fuel = new Fuel(GraphicsDevice, mapa);
         }
 
 
         protected override void Update(GameTime gameTime)
         {
+
             // Mover la moto del jugador
             if (Keyboard.GetState().IsKeyDown(Keys.Up))
             {
@@ -65,8 +74,9 @@ namespace TronPlay
 
             // Mover y actualizar la moto enemiga
             motoEnemiga.Update(gameTime);
+            fuel.Update(gameTime);
 
-            // Verificar colisiones entre la moto del jugador y la moto enemiga
+            // Verificar colisiones
             if (moto.HasCollidedWithMoto(motoEnemiga) || motoEnemiga.HasCollidedWithMoto(moto))
             {
                 Console.WriteLine("¡Colisión detectada!");
@@ -79,6 +89,7 @@ namespace TronPlay
 
 
 
+
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
@@ -87,8 +98,13 @@ namespace TronPlay
             mapa.Draw(spriteBatch);
             moto.Draw(spriteBatch, gameTime);
             motoEnemiga.Draw(spriteBatch, gameTime); // Dibuja la moto enemiga
+
+            fuel.Draw(spriteBatch);
+
             spriteBatch.End();
+
             base.Draw(gameTime);
         }
+
     }
 }

@@ -5,9 +5,9 @@ namespace TronPlay
 {
     public class Mapa : LinkedList<bool>
     {
-        private const int Width = 100;
-        private const int Height = 100;
-        private bool[,] matriz;
+        public const int Width = 100;
+        public const int Height = 100;
+        public bool[,] matriz;
         private Texture2D pixelTexture;
 
         public Mapa(GraphicsDevice graphicsDevice)
