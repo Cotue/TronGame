@@ -12,6 +12,7 @@ namespace TronPlay
         SpriteBatch spriteBatch;
         Mapa mapa;
         Moto moto;
+        GameTime gameTime;
 
         public Game1()
         {
@@ -36,33 +37,33 @@ namespace TronPlay
             // Verifica si el jugador presiona las teclas de flecha para mover la moto
             if (Keyboard.GetState().IsKeyDown(Keys.Up))
             {
-                moto.MoveUp();
+                moto.MoveUp(gameTime);
             }
             else if (Keyboard.GetState().IsKeyDown(Keys.Down))
             {
-                moto.MoveDown();
+                moto.MoveDown(gameTime);
             }
             else if (Keyboard.GetState().IsKeyDown(Keys.Left))
             {
-                moto.MoveLeft();
+                moto.MoveLeft(gameTime);
             }
             else if (Keyboard.GetState().IsKeyDown(Keys.Right))
             {
-                moto.MoveRight();
+                moto.MoveRight(gameTime);
             }
 
+            // Actualizar la estela de la moto y borrar los nodos después de 3 segundos
+            moto.UpdateTrail(gameTime);
+
             // Verificar colisiones después de mover la moto
-            if (moto.HasCollided(100, 100)) // Asumiendo un mapa de 100x100
+            if (moto.HasCollided(100, 100))
             {
-                // Manejar la colisión
                 Console.WriteLine("¡Colisión detectada!");
-                // Aquí podrías detener el juego, reiniciar la partida o mostrar algún mensaje
-                Exit(); // De momento, vamos a cerrar el juego al detectar colisión
+                Exit(); // De momento, cerramos el juego al detectar colisión
             }
 
             base.Update(gameTime);
         }
-
 
 
         protected override void Draw(GameTime gameTime)
@@ -71,7 +72,7 @@ namespace TronPlay
 
             spriteBatch.Begin();
             mapa.Draw(spriteBatch);
-            moto.Draw(spriteBatch);
+            moto.Draw(spriteBatch, gameTime);
             spriteBatch.End();
             base.Draw(gameTime);
         }
