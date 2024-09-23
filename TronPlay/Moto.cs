@@ -1,17 +1,18 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Collections.Generic;
 
 namespace TronPlay
 {
     public class Moto : LinkedList<TrailNode>
     {
-        private Texture2D motoTexture;
-        private Texture2D trailTexture;
-        private const int MotoLength = 8; // La moto más la estela ocupan 8 posiciones
+        public Texture2D motoTexture;
+        public Texture2D trailTexture;
+        public const int MotoLength = 8; // La moto más la estela ocupan 8 posiciones
  // La moto más la estela ocupan 4 posiciones
-        private Mapa mapa;
-        private double trailDuration = 3000; // Duración de la estela en milisegundos (3 segundos)
+        public Mapa mapa;
+        public double trailDuration = 3000; // Duración de la estela en milisegundos (3 segundos)
 
         public Moto(GraphicsDevice graphicsDevice, Mapa mapa)
         {
@@ -49,30 +50,30 @@ namespace TronPlay
 
 
 
-        public bool HasCollided(int width, int height)
+        public bool HasCollidedWithMoto(MotoEnemiga otherMoto)
         {
-            var headPosition = head.Data.Position;
+            // Obtener la posición de la cabeza de la moto actual
+            var currentHeadPosition = head.Data.Position;
 
-            // Colisión con los límites del mapa
-            if (headPosition.X < 0 || headPosition.X >= width || headPosition.Y < 0 || headPosition.Y >= height)
+            // Comprobar colisión de la cabeza con la cabeza de la otra moto
+            if (currentHeadPosition == otherMoto.head.Data.Position)
             {
                 return true;
             }
 
-            // Colisión con la estela
-            var current = head.Next; // Saltamos la cabeza
+            // Comprobar colisión de la cabeza con la estela de la otra moto
+            var current = otherMoto.head;
             while (current != null)
             {
-                if (current.Data.Position == headPosition)
+                if (currentHeadPosition == current.Data.Position)
                 {
-                    return true; // Colisión con la estela
+                    return true; // Colisión con la estela de la moto enemiga
                 }
                 current = current.Next;
             }
 
-            return false; // No ha colisionado
+            return false; // No hubo colisión
         }
-
 
 
 
@@ -106,7 +107,7 @@ namespace TronPlay
 
 
 
-        private void Move(Point newPosition, GameTime gameTime)
+        public void Move(Point newPosition, GameTime gameTime)
         {
             // Añadir la nueva posición de la cabeza al frente de la lista
             AddFirst(new TrailNode(newPosition, gameTime.TotalGameTime));
